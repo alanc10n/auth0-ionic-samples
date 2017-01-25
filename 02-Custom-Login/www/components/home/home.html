@@ -1,14 +1,14 @@
 <ion-view view-title="Auth0 Ionic Quickstart" ng-controller="HomeController as vm">
   <ion-content class="padding">
-    <div ng-hide="isAuthenticated">
+    <div ng-if="!vm.auth.isAuthenticated()">
       <p>Welcome to the Auth0 Ionic Sample! Please log in:</p>
       <button class="button button-full button-positive" ng-click="vm.login()">
         Log In / Sign Up
       </button>
     </div>
-    <div ng-show="isAuthenticated">
+    <div ng-if="vm.auth.isAuthenticated()">
       <p>Thank you for logging in!</p>
-      <button class="button button-full button-dark" ng-click="vm.logout()">
+      <button class="button button-full button-dark" ng-click="vm.auth.logout()">
         Log Out
       </button>
     </div>

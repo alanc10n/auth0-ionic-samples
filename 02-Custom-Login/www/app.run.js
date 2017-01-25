@@ -25,14 +25,6 @@
         StatusBar.styleDefault();
       }
 
-      // Use the authManager from angular-jwt to check for
-      // the user's authentication state when the page is
-      // refreshed and maintain authentication
-      authService.checkAuthOnRefresh();
-
-      // Process the auth token if it exists and fetch the profile
-      authService.authenticateAndGetProfile();
-
     });
 
   }

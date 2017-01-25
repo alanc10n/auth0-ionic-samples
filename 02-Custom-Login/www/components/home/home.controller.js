@@ -11,8 +11,8 @@
   function HomeController($state, authService) {
     var vm = this;
 
+    vm.auth = authService;
     vm.login = login;
-    vm.logout = authService.logout;
 
     function login() {
       $state.go("login");

@@ -12,7 +12,7 @@
 
     vm.login = login;
     vm.signup = signup;
-    vm.loginWithGoogle = authService.loginWithGoogle;    
+    vm.loginWithGoogle = authService.loginWithGoogle;
 
     // Log in with username and password
     function login() {
