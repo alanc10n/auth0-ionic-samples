@@ -1,20 +1,18 @@
 angular.module('starter.services', [])
 
-.factory('Auth', function($state) {
+.factory('Auth', function($rootScope) {
   var Auth0Cordova = require('@auth0/cordova');
   var auth0 = require('auth0-js');
   var userProfile = {};
 
   var auth0Config = {
-    // needed for auth0
-    clientID: '{CLIENT_ID}',
-
-    // needed for auth0cordova
     clientId: '{CLIENT_ID}',
     domain: '{DOMAIN}',
     callbackURL: location.href,
     packageIdentifier: 'io.ionic.starter'
   };
+
+  auth0Config.clientID = auth0Config.clientId;
 
   var webAuth = new auth0.WebAuth(auth0Config);
 
@@ -29,7 +27,6 @@ angular.module('starter.services', [])
     var expiresAt = JSON.parse(window.localStorage.getItem('expires_at'));
     return Date.now() < expiresAt;
   }
-
   
   function getProfile(cb) {
     var accessToken = localStorage.getItem('access_token');
@@ -58,6 +55,7 @@ angular.module('starter.services', [])
       }
       if (authResult && authResult.accessToken && authResult.idToken) {
         setSession(authResult);
+        $rootScope.$apply();
       }
     });
   }
@@ -73,6 +71,6 @@ angular.module('starter.services', [])
     login: login,
     logout: logout,
     getProfile: getProfile,
-    isAuthenticated: isAuthenticated,
+    isAuthenticated: isAuthenticated
   };
 });
