@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
   $scope.auth = Auth;
 })
 
-.controller('ProfileCtrl', function($rootScope, $scope, Auth) {
+.controller('ProfileCtrl', function($scope, Auth) {
   $scope.auth = Auth;
 
   if (Auth.isAuthenticated()) {
